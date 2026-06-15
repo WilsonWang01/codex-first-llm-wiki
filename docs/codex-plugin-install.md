@@ -22,4 +22,7 @@ python3 tools/install_plugin.py --install --target ~/some/plugin-dir
 ```
 
 The install script copies the vault and ignores transient files such as
-`__pycache__`. It does not alter `raw/` content in the source vault.
+`__pycache__`. When the vault is a Git checkout, it installs only tracked files
+so private `raw/` sources and generated wiki pages ignored by `.gitignore` do
+not get copied into the plugin bundle. It does not alter `raw/` content in the
+source vault.

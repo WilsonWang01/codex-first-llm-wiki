@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -32,9 +33,28 @@ def copy_plugin(target_root: Path, name: str) -> Path:
     target = target_root.expanduser().resolve() / name
     if target.exists():
         shutil.rmtree(target)
-    ignore = shutil.ignore_patterns(".git", "__pycache__", "*.pyc", "tmp")
-    shutil.copytree(ROOT, target, ignore=ignore)
+    tracked = tracked_files()
+    if tracked:
+        for src in tracked:
+            dst = target / src
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(ROOT / src, dst)
+    else:
+        ignore = shutil.ignore_patterns(".git", "__pycache__", "*.pyc", "tmp")
+        shutil.copytree(ROOT, target, ignore=ignore)
     return target
+
+
+def tracked_files() -> list[Path]:
+    result = subprocess.run(
+        ["git", "ls-files", "-z"],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+    )
+    if result.returncode != 0 or not result.stdout:
+        return []
+    return [Path(item.decode("utf-8")) for item in result.stdout.split(b"\0") if item]
 
 
 def main() -> int:
