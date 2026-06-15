@@ -4,10 +4,12 @@
 from __future__ import annotations
 
 import argparse
+import io
 import json
 import shutil
 import subprocess
 import sys
+import tarfile
 from pathlib import Path
 
 from wiki_common import ROOT
@@ -33,6 +35,8 @@ def copy_plugin(target_root: Path, name: str) -> Path:
     target = target_root.expanduser().resolve() / name
     if target.exists():
         shutil.rmtree(target)
+    if copy_git_archive(target):
+        return target
     tracked = tracked_files()
     if tracked:
         for src in tracked:
@@ -43,6 +47,21 @@ def copy_plugin(target_root: Path, name: str) -> Path:
         ignore = shutil.ignore_patterns(".git", "__pycache__", "*.pyc", "tmp")
         shutil.copytree(ROOT, target, ignore=ignore)
     return target
+
+
+def copy_git_archive(target: Path) -> bool:
+    result = subprocess.run(
+        ["git", "archive", "--format=tar", "HEAD"],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+    )
+    if result.returncode != 0 or not result.stdout:
+        return False
+    target.mkdir(parents=True, exist_ok=True)
+    with tarfile.open(fileobj=io.BytesIO(result.stdout), mode="r:") as archive:
+        archive.extractall(target)
+    return True
 
 
 def tracked_files() -> list[Path]:
