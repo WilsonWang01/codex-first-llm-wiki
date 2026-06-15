@@ -36,6 +36,7 @@ many files to inspect.
 
 ## Response Requirements
 
+- Write answers, synthesis, caveats, and follow-up gaps in Chinese.
 - Separate known facts from inferences.
 - Cite relevant wiki pages by path.
 - Keep gaps explicit.

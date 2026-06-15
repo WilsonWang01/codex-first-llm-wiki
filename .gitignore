@@ -8,18 +8,37 @@ tmp/
 
 # Personal source material and compiled private wiki pages.
 raw/**
-!raw/**/
-!raw/**/.gitkeep
+!raw/articles/
+!raw/articles/.gitkeep
+!raw/journals/
+!raw/journals/.gitkeep
+!raw/meetings/
+!raw/meetings/.gitkeep
+!raw/papers/
+!raw/papers/.gitkeep
+!raw/sessions/
+!raw/sessions/.gitkeep
 wiki/sources/**
+!wiki/sources/
+!wiki/sources/.gitkeep
 wiki/entities/**
+!wiki/entities/
+!wiki/entities/.gitkeep
 wiki/concepts/**
+!wiki/concepts/
+!wiki/concepts/.gitkeep
 wiki/projects/**
+!wiki/projects/
+!wiki/projects/.gitkeep
 wiki/questions/**
+!wiki/questions/
+!wiki/questions/.gitkeep
 wiki/syntheses/**
-!wiki/**/
-!wiki/**/.gitkeep
+!wiki/syntheses/
+!wiki/syntheses/.gitkeep
 
 # Generated caches and reports.
+meta/plans/
 meta/retrieval/**
 !meta/retrieval/
 !meta/retrieval/.gitkeep

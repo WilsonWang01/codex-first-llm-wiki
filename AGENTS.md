@@ -16,6 +16,17 @@ maintenance. Treat this file as the stable project contract.
 - `.agents/skills/` contains Codex-facing workflows. Prefer the most specific
   skill when the user asks to ingest, query, retrieve, or lint.
 
+## Language Rules
+
+- All distilled knowledge intended for the user to read must be written in
+  Chinese, including summaries, key claims, answers, syntheses, reports,
+  status explanations, follow-up gaps, and reader-facing wiki content.
+- Other content is not language-restricted. File names, slugs, tags, code,
+  commands, tool output, schemas, and short source quotations may keep the
+  original language when that is more accurate or operationally useful.
+- When preserving non-Chinese source terms, add Chinese explanation around them
+  for reader-facing content.
+
 ## Default Query Rules
 
 1. Read `wiki/hot.md` first.

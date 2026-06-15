@@ -49,6 +49,10 @@ python3 tools/lint_links.py --json
 
 - Never modify `raw/` unless the user explicitly asks to import or change source
   files.
+- Write all user-facing distilled knowledge in Chinese, including summaries,
+  synthesis, answers, reports, status explanations, and follow-up gaps.
+- File names, slugs, tags, code, commands, schemas, tool output, and direct
+  source terms may keep their original language when useful.
 - Start queries with `wiki/hot.md`, then `wiki/index.md`.
 - Default to normal query mode: snippets plus at most 3-5 full pages.
 - Update `wiki/index.md`, `wiki/log.md`, `wiki/hot.md`, and
