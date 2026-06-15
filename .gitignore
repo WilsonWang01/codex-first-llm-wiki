@@ -1,0 +1,32 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+tmp/
+
+# Personal source material and compiled private wiki pages.
+raw/**
+!raw/**/
+!raw/**/.gitkeep
+wiki/sources/**
+wiki/entities/**
+wiki/concepts/**
+wiki/projects/**
+wiki/questions/**
+wiki/syntheses/**
+!wiki/**/
+!wiki/**/.gitkeep
+
+# Generated caches and reports.
+meta/retrieval/**
+!meta/retrieval/
+!meta/retrieval/.gitkeep
+meta/lint-reports/**
+!meta/lint-reports/
+!meta/lint-reports/.gitkeep
+meta/link-index.json
+meta/graph.json
+meta/graph.html
+meta/quality-audit.json

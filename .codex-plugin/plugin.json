@@ -1,0 +1,6 @@
+{
+  "name": "codex-first-llm-wiki",
+  "version": "0.1.0",
+  "description": "Codex-first local Markdown knowledge base manager.",
+  "skills": "./.agents/skills/"
+}
