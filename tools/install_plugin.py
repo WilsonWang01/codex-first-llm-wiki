@@ -60,7 +60,10 @@ def copy_git_archive(target: Path) -> bool:
         return False
     target.mkdir(parents=True, exist_ok=True)
     with tarfile.open(fileobj=io.BytesIO(result.stdout), mode="r:") as archive:
-        archive.extractall(target)
+        try:
+            archive.extractall(target, filter="data")
+        except TypeError:
+            archive.extractall(target)
     return True
 
 
